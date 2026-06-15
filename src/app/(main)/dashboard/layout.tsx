@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Sidebar } from '@/components/layout/Sidebar';
 
 export const metadata: Metadata = {
   title: 'Dashboard — JobPortal',
@@ -6,5 +7,12 @@ export const metadata: Metadata = {
 };
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <div className="flex flex-col md:flex-row min-h-[calc(100vh-4rem)]">
+      <Sidebar />
+      <div className="flex-1 overflow-x-hidden">
+        {children}
+      </div>
+    </div>
+  );
 }
