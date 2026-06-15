@@ -23,7 +23,7 @@ import { Suspense } from 'react';
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen flex flex-col justify-center px-4 relative overflow-hidden bg-[var(--bg-base)]">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden bg-[var(--bg-base)]">
       {/* Premium subtle background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[600px] opacity-30 pointer-events-none dark:opacity-20"
         style={{ background: 'radial-gradient(ellipse at top, rgba(124,58,237,0.3) 0%, rgba(79,70,229,0.1) 40%, transparent 80%)' }} />
