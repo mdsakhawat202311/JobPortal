@@ -33,7 +33,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             type={inputType}
             placeholder=" " // Required for floating label peer-placeholder-shown
             className={cn(
-              'peer w-full bg-[rgba(255,255,255,0.03)] border border-[var(--border)] rounded-xl px-4 pb-2.5 pt-6 text-[var(--text-primary)] text-base outline-none transition-all',
+              'peer w-full bg-[rgba(255,255,255,0.03)] border border-[var(--border)] rounded-xl px-4 pt-6 pb-2 text-[var(--text-primary)] text-base outline-none transition-all',
               'hover:border-[var(--border-hover)] focus:bg-[var(--bg-card)] focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent-subtle)]',
               icon && 'pl-11',
               (iconRight || isPassword) && 'pr-11',
@@ -46,9 +46,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             <label 
               htmlFor={inputId} 
               className={cn(
-                "absolute left-4 top-4 -translate-y-1/2 text-[var(--text-muted)] text-sm transition-all pointer-events-none",
-                "peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-4 peer-focus:text-xs peer-focus:text-[var(--accent)]",
-                icon && "left-11 peer-focus:left-11",
+                "absolute text-[var(--text-muted)] text-base duration-200 transform -translate-y-3 scale-75 top-4 z-10 origin-[0] pointer-events-none",
+                icon ? "left-11" : "left-4",
+                "peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0",
+                "peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-[var(--accent)]",
                 error && "text-red-500 peer-focus:text-red-500"
               )}
             >
