@@ -21,9 +21,9 @@ export function JobCard({ job, matchScore, matchedSkills = [], missingSkills = [
   const hasMatch = matchScore !== undefined;
 
   return (
-    <div className="glass-card p-5 flex flex-col gap-4 group">
+    <div className="glass-card p-6 rounded-2xl flex flex-col h-full group">
       {/* Header */}
-      <div className="flex items-start gap-3">
+      <div className="flex items-start gap-4">
         <CompanyLogo
           src={job.company?.logo_url}
           name={job.company?.name || 'Company'}
@@ -33,14 +33,14 @@ export function JobCard({ job, matchScore, matchedSkills = [], missingSkills = [
         <div className="flex-1 min-w-0">
           <Link
             href={`/jobs/${job.id}`}
-            className="font-semibold text-[var(--text-primary)] hover:text-[var(--accent-bright)] transition-colors line-clamp-1 leading-snug block"
+            className="font-semibold text-[var(--text-primary)] hover:text-[var(--accent-bright)] transition-colors line-clamp-1 leading-snug block mb-2"
           >
             {job.title}
           </Link>
-          <p className="text-sm text-[var(--text-secondary)] mt-0.5 line-clamp-1">
+          <p className="text-sm text-[var(--text-secondary)] line-clamp-1">
             {job.company?.name}
           </p>
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5 text-xs text-[var(--text-muted)]">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-xs text-[var(--text-muted)]">
             {job.location && (
               <span className="flex items-center gap-1">
                 <MapPin size={11} /> {job.location}
@@ -54,14 +54,14 @@ export function JobCard({ job, matchScore, matchedSkills = [], missingSkills = [
 
         {/* Match score ring */}
         {isLoggedIn && hasMatch && (
-          <div className="shrink-0">
+          <div className="shrink-0 ml-4">
             <MatchScoreRing score={matchScore!} size={58} strokeWidth={4} />
           </div>
         )}
       </div>
 
       {/* Badges */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 mt-4">
         <Badge variant="primary">{getJobTypeBadge(job.job_type)}</Badge>
         {job.salary_min || job.salary_max ? (
           <Badge variant="neutral">
@@ -76,7 +76,7 @@ export function JobCard({ job, matchScore, matchedSkills = [], missingSkills = [
 
       {/* Skills preview */}
       {requiredSkills.length > 0 && (
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1.5 mt-4">
           {requiredSkills.map((js: any) => {
             const name = js.skill?.name || '';
             const isMatched = matchedSkills.includes(name);
@@ -99,7 +99,7 @@ export function JobCard({ job, matchScore, matchedSkills = [], missingSkills = [
       )}
 
       {/* Footer */}
-      <div className="flex items-center justify-between pt-2 border-t border-[var(--border)] mt-auto">
+      <div className="flex items-center justify-between pt-6 border-t border-[var(--border)] mt-auto">
         {isLoggedIn && hasMatch ? (
           <span className={cn('text-xs font-medium', matchScore! >= 80 ? 'match-excellent' : matchScore! >= 60 ? 'match-good' : matchScore! >= 40 ? 'match-fair' : 'match-low')}>
             {matchScore}% skills match

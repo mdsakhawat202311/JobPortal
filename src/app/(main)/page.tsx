@@ -66,7 +66,7 @@ export default function JobFeedPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative py-20 overflow-hidden" style={{ background: 'var(--gradient-hero)' }}>
+      <section className="relative pt-12 pb-6 overflow-hidden" style={{ background: 'var(--gradient-hero)' }}>
         {/* Mesh gradient blobs */}
         <div className="absolute top-0 left-1/4 w-72 h-72 rounded-full opacity-30 pointer-events-none blur-3xl"
           style={{ background: 'radial-gradient(circle, rgba(165,233,221,0.5) 0%, transparent 70%)' }} />
@@ -80,7 +80,7 @@ export default function JobFeedPage() {
             Skills-powered job matching
           </div>
 
-          <h1 className="font-display font-black text-5xl md:text-6xl lg:text-7xl text-[var(--text-primary)] mb-5 leading-[1.05] tracking-tight">
+          <h1 className="font-display font-black text-5xl md:text-6xl lg:text-7xl text-[var(--text-primary)] mb-6 leading-[1.05] tracking-tight">
             Find Your Perfect<br />
             <span className="gradient-text">Next Role</span>
           </h1>
@@ -89,7 +89,7 @@ export default function JobFeedPage() {
           </p>
 
           {/* Inline search */}
-          <div className="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto mb-16">
+          <div className="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto mb-8">
             <div className="relative flex-1">
               <input
                 type="search"
@@ -109,7 +109,7 @@ export default function JobFeedPage() {
           </div>
 
           {/* Stats row */}
-          <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {STATS.map(({ icon: Icon, label, value }) => (
               <div key={label} className="glass-card px-4 py-4 text-center">
                 <div className="flex justify-center mb-2">
@@ -124,9 +124,9 @@ export default function JobFeedPage() {
       </section>
 
       {/* Main content */}
-      <section className="py-12">
+      <section className="pt-6 pb-12">
         <div className="container-app">
-          <div className="grid grid-cols-1 lg:grid-cols-[16rem_1fr] gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[20rem_1fr] gap-8">
             {/* Sidebar filters */}
             <aside>
               <JobFilters
@@ -148,7 +148,7 @@ export default function JobFeedPage() {
               </div>
 
               {loading ? (
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                   {Array.from({ length: 6 }).map((_, i) => <JobCardSkeleton key={i} />)}
                 </div>
               ) : jobs.length === 0 ? (
@@ -158,7 +158,7 @@ export default function JobFeedPage() {
                   <p className="text-sm text-[var(--text-muted)]">Try adjusting your search filters.</p>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                   {jobs.map((job) => (
                     <JobCard
                       key={job.id}

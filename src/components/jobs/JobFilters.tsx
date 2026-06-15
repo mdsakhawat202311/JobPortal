@@ -32,7 +32,7 @@ export function JobFilters({ filters, onChange, onReset }: JobFiltersProps) {
   const hasActiveFilters = filters.jobType || filters.location;
 
   return (
-    <div className="glass-card p-5 space-y-5 sticky top-20">
+    <div className="glass-card p-6 space-y-6 sticky top-20 rounded-2xl">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2 text-sm font-semibold text-[var(--text-primary)]">
           <SlidersHorizontal size={15} />
@@ -66,7 +66,7 @@ export function JobFilters({ filters, onChange, onReset }: JobFiltersProps) {
           onChange={(e) => onChange({ ...filters, location: e.target.value })}
           className="input text-sm"
         />
-        <div className="flex flex-wrap gap-1.5 mt-2">
+        <div className="flex flex-wrap gap-1.5 mt-4">
           {LOCATION_SUGGESTIONS.map((loc) => (
             <button
               key={loc}
