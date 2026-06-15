@@ -4,107 +4,107 @@
    DESIGN TOKENS
 ────────────────────────────────────────────── */
 :root {
-  /* Core Palette — Light Theme */
-  --bg-base:        #FAFAFA;
-  --bg-surface:     #F4F4F5;
+  /* Core Palette — Light Theme (Pastel to Teal) */
+  --bg-base:        #FDF4AF; /* Pale buttery yellow */
+  --bg-surface:     #FFFFFF;
   --bg-elevated:    #FFFFFF;
   --bg-card:        #FFFFFF;
-  --bg-card-hover:  #F4F4F5;
-  --bg-glass:       rgba(255, 255, 255, 0.7);
+  --bg-card-hover:  rgba(165, 233, 221, 0.15); /* Light aqua tint */
+  --bg-glass:       rgba(255, 255, 255, 0.75);
 
-  --accent:         #7C3AED;
-  --accent-bright:  #6D28D9;
-  --accent-glow:    rgba(124, 58, 237, 0.15);
-  --accent-subtle:  rgba(124, 58, 237, 0.08);
+  --accent:         #34908B; /* Deep teal */
+  --accent-bright:  #277A75; /* Darker teal hover */
+  --accent-glow:    rgba(52, 144, 139, 0.2);
+  --accent-subtle:  #A5E9DD; /* Light aqua */
 
-  --text-primary:   #18181B;
-  --text-secondary: #52525B;
-  --text-muted:     #71717A;
-  --text-disabled:  #A1A1AA;
+  --text-primary:   #1A3634; /* Dark charcoal/teal */
+  --text-secondary: #3D6663; /* Muted dark teal */
+  --text-muted:     #628B87;
+  --text-disabled:  #94B8B4;
 
-  --border:         rgba(0,0,0,0.08);
-  --border-accent:  rgba(124,58,237,0.3);
-  --border-hover:   rgba(0,0,0,0.15);
+  --border:         rgba(52, 144, 139, 0.15);
+  --border-accent:  #6FBEB2; /* Muted seafoam */
+  --border-hover:   rgba(52, 144, 139, 0.3);
 
   --success:        #10B981;
   --warning:        #F59E0B;
   --danger:         #EF4444;
-  --info:           #3B82F6; /* Normal Blue for light mode */
+  --info:           #3B82F6;
 
   /* Status colors */
   --status-pending:     #F59E0B;
   --status-reviewing:   #3B82F6;
-  --status-interviewing:#8B5CF6;
+  --status-interviewing:#A5E9DD;
   --status-offered:     #10B981;
   --status-rejected:    #EF4444;
 
   /* Gradients */
-  --gradient-brand:    linear-gradient(135deg, #7C3AED 0%, #4F46E5 50%, #0EA5E9 100%);
-  --gradient-card:     linear-gradient(145deg, rgba(124,58,237,0.05) 0%, rgba(79,70,229,0.02) 100%);
-  --gradient-hero:     linear-gradient(135deg, #F8FAFC 0%, #EEF2FF 50%, #F8FAFC 100%);
+  --gradient-brand:    linear-gradient(135deg, #6FBEB2 0%, #34908B 100%);
+  --gradient-card:     linear-gradient(145deg, rgba(165, 233, 221, 0.1) 0%, rgba(52, 144, 139, 0.02) 100%);
+  --gradient-hero:     linear-gradient(135deg, #FDF4AF 0%, #FAFAFA 50%, #FDF4AF 100%);
 
   /* Shadows */
-  --shadow-card:    0 4px 12px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02);
-  --shadow-accent:  0 8px 32px rgba(124,58,237,0.2);
-  --shadow-glow:    0 0 60px rgba(124,58,237,0.1);
+  --shadow-card:    0 8px 24px rgba(52, 144, 139, 0.05), 0 2px 8px rgba(52, 144, 139, 0.03);
+  --shadow-accent:  0 12px 32px rgba(52, 144, 139, 0.25);
+  --shadow-glow:    0 0 60px rgba(165, 233, 221, 0.3);
 
   /* Radii */
-  --radius-sm:   6px;
-  --radius:      10px;
-  --radius-lg:   16px;
-  --radius-xl:   24px;
+  --radius-sm:   8px;
+  --radius:      12px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
   --radius-full: 9999px;
 
   /* Transitions */
-  --transition:      all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-spring: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition:      all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .dark {
-  /* Core Palette — Dark Navy + Electric Violet */
-  --bg-base:        #080C18;
-  --bg-surface:     #0D1224;
-  --bg-elevated:    #131929;
-  --bg-card:        #161D30;
-  --bg-card-hover:  #1C2540;
-  --bg-glass:       rgba(22, 29, 48, 0.7);
+  /* Core Palette — Dark Ocean/Teal */
+  --bg-base:        #081615;
+  --bg-surface:     #0D2422;
+  --bg-elevated:    #132D2B;
+  --bg-card:        #153230;
+  --bg-card-hover:  #1B403D;
+  --bg-glass:       rgba(21, 50, 48, 0.75);
 
-  --accent:         #7C3AED;
-  --accent-bright:  #8B5CF6;
-  --accent-glow:    rgba(124, 58, 237, 0.35);
-  --accent-subtle:  rgba(124, 58, 237, 0.12);
+  --accent:         #A5E9DD; /* Light aqua */
+  --accent-bright:  #FDF4AF; /* Pale buttery yellow */
+  --accent-glow:    rgba(165, 233, 221, 0.25);
+  --accent-subtle:  rgba(111, 190, 178, 0.2); /* Muted seafoam */
 
-  --text-primary:   #F1F5F9;
-  --text-secondary: #94A3B8;
-  --text-muted:     #475569;
-  --text-disabled:  #334155;
+  --text-primary:   #E6F3F1;
+  --text-secondary: #A0C2BF;
+  --text-muted:     #6B8E8A;
+  --text-disabled:  #42615E;
 
-  --border:         rgba(255,255,255,0.07);
-  --border-accent:  rgba(124,58,237,0.4);
-  --border-hover:   rgba(255,255,255,0.14);
+  --border:         rgba(165, 233, 221, 0.15);
+  --border-accent:  #6FBEB2;
+  --border-hover:   rgba(165, 233, 221, 0.3);
 
   --success:        #10B981;
   --warning:        #F59E0B;
   --danger:         #EF4444;
-  --info:           #93C5FD; /* Lighter Blue for dark mode */
+  --info:           #A5E9DD;
 
   /* Status colors */
   --status-pending:     #F59E0B;
-  --status-reviewing:   #3B82F6;
-  --status-interviewing:#8B5CF6;
+  --status-reviewing:   #A0C2BF;
+  --status-interviewing:#A5E9DD;
   --status-offered:     #10B981;
   --status-rejected:    #EF4444;
 
   /* Gradients */
-  --gradient-brand:    linear-gradient(135deg, #7C3AED 0%, #4F46E5 50%, #0EA5E9 100%);
-  --gradient-card:     linear-gradient(145deg, rgba(124,58,237,0.08) 0%, rgba(79,70,229,0.04) 100%);
-  --gradient-hero:     linear-gradient(135deg, #080C18 0%, #0F0A2E 50%, #080C18 100%);
+  --gradient-brand:    linear-gradient(135deg, #6FBEB2 0%, #A5E9DD 100%);
+  --gradient-card:     linear-gradient(145deg, rgba(165, 233, 221, 0.08) 0%, rgba(52, 144, 139, 0.02) 100%);
+  --gradient-hero:     linear-gradient(135deg, #081615 0%, #0D2422 50%, #081615 100%);
 
   /* Shadows */
   --shadow-card:    0 4px 24px rgba(0,0,0,0.4), 0 1px 4px rgba(0,0,0,0.2);
-  --shadow-accent:  0 8px 32px rgba(124,58,237,0.3);
-  --shadow-glow:    0 0 60px rgba(124,58,237,0.15);
+  --shadow-accent:  0 8px 32px rgba(165,233,221,0.2);
+  --shadow-glow:    0 0 60px rgba(165,233,221,0.15);
 }
 
 /* ─────────────────────────────────────────────

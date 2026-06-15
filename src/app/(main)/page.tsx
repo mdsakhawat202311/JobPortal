@@ -69,9 +69,9 @@ export default function JobFeedPage() {
       <section className="relative py-20 overflow-hidden" style={{ background: 'var(--gradient-hero)' }}>
         {/* Mesh gradient blobs */}
         <div className="absolute top-0 left-1/4 w-72 h-72 rounded-full opacity-30 pointer-events-none blur-3xl"
-          style={{ background: 'radial-gradient(circle, rgba(124,58,237,0.5) 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(circle, rgba(165,233,221,0.5) 0%, transparent 70%)' }} />
         <div className="absolute bottom-0 right-1/4 w-96 h-64 rounded-full opacity-20 pointer-events-none blur-3xl"
-          style={{ background: 'radial-gradient(circle, rgba(79,70,229,0.6) 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(circle, rgba(52,144,139,0.6) 0%, transparent 70%)' }} />
 
         <div className="container-app relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 text-sm font-medium"

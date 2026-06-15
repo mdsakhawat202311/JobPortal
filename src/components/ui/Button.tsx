@@ -26,7 +26,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     const variantClasses = {
-      primary: "bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:from-violet-500 hover:to-indigo-500 border border-white/10",
+      primary: "bg-gradient-to-r from-[#6FBEB2] to-[#34908B] text-white shadow-lg shadow-[#34908B]/25 hover:shadow-[#34908B]/40 hover:from-[#5AA89D] hover:to-[#277A75] border border-white/10",
       secondary: "bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border)] shadow-sm hover:bg-[var(--bg-card-hover)] hover:border-[var(--border-hover)]",
       ghost: "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]",
       danger: "bg-red-500 text-white shadow-lg shadow-red-500/25 hover:bg-red-400"

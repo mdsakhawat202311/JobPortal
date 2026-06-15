@@ -93,7 +93,7 @@ export function Navbar() {
           <div className="flex items-center gap-8">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shadow-[0_0_16px_rgba(124,58,237,0.5)] transition-shadow group-hover:shadow-[0_0_24px_rgba(124,58,237,0.7)]">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#6FBEB2] to-[#34908B] flex items-center justify-center shadow-[0_0_16px_rgba(52,144,139,0.5)] transition-shadow group-hover:shadow-[0_0_24px_rgba(52,144,139,0.7)]">
                 <Zap size={16} className="text-white" fill="white" />
               </div>
               <span className="font-display font-bold text-lg text-[var(--text-primary)]">

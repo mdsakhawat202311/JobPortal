@@ -25,18 +25,18 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden bg-[var(--bg-base)]">
       {/* Premium subtle background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[600px] opacity-30 pointer-events-none dark:opacity-20"
-        style={{ background: 'radial-gradient(ellipse at top, rgba(124,58,237,0.3) 0%, rgba(79,70,229,0.1) 40%, transparent 80%)' }} />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[600px] opacity-40 pointer-events-none dark:opacity-30"
+        style={{ background: 'radial-gradient(ellipse at top, rgba(165,233,221,0.5) 0%, rgba(52,144,139,0.15) 40%, transparent 80%)' }} />
 
       <div className="w-full max-w-[420px] mx-auto relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-700">
         {/* Logo */}
         <div className="text-center mb-10">
           <Link href="/" className="inline-flex items-center gap-2 mb-8 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shadow-[0_0_24px_rgba(124,58,237,0.4)] transition-transform group-hover:scale-105">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#6FBEB2] to-[#34908B] flex items-center justify-center shadow-[0_0_24px_rgba(52,144,139,0.3)] transition-transform group-hover:scale-105">
               <Zap size={20} className="text-white" fill="white" />
             </div>
             <span className="font-display font-bold text-2xl text-[var(--text-primary)] tracking-tight">
-              Job<span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-indigo-600">Portal</span>
+              Job<span className="bg-clip-text text-transparent bg-gradient-to-r from-[#6FBEB2] to-[#34908B]">Portal</span>
             </span>
           </Link>
           <h1 className="text-3xl font-display font-bold text-[var(--text-primary)] tracking-tight">Welcome back</h1>
@@ -53,7 +53,7 @@ export default function LoginPage() {
         {/* Footer Link */}
         <div className="mt-8 text-center text-sm text-[var(--text-secondary)]">
           Don&apos;t have an account?{' '}
-          <Link href="/signup" className="text-[var(--accent)] hover:text-indigo-500 font-semibold transition-colors">
+          <Link href="/signup" className="text-[var(--accent)] hover:text-[#277A75] font-semibold transition-colors">
             Create an account
           </Link>
         </div>
