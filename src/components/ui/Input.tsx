@@ -1,7 +1,8 @@
 'use client';
 
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { Eye, EyeOff, AlertCircle } from 'lucide-react';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -12,42 +13,71 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, hint, icon, iconRight, className, id, ...props }, ref) => {
+  ({ label, error, hint, icon, iconRight, className, id, type, ...props }, ref) => {
     const inputId = id || label?.toLowerCase().replace(/\s+/g, '-');
+    const [showPassword, setShowPassword] = useState(false);
+    const isPassword = type === 'password';
+    const inputType = isPassword ? (showPassword ? 'text' : 'password') : type;
+
     return (
       <div className="w-full">
-        {label && (
-          <label htmlFor={inputId} className="input-label">
-            {label}
-            {props.required && <span className="text-red-400 ml-1">*</span>}
-          </label>
-        )}
-        <div className="relative">
+        <div className="relative group">
           {icon && (
-            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)] pointer-events-none">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)] group-focus-within:text-[var(--accent)] transition-colors z-10 pointer-events-none">
               {icon}
             </div>
           )}
           <input
             ref={ref}
             id={inputId}
+            type={inputType}
+            placeholder=" " // Required for floating label peer-placeholder-shown
             className={cn(
-              'input',
-              icon && 'pl-10',
-              iconRight && 'pr-10',
-              error && 'border-red-500/60 focus:border-red-500 focus:shadow-[0_0_0_3px_rgba(239,68,68,0.12)]',
+              'peer w-full bg-[rgba(255,255,255,0.03)] border border-[var(--border)] rounded-xl px-4 pb-2.5 pt-6 text-[var(--text-primary)] text-base outline-none transition-all',
+              'hover:border-[var(--border-hover)] focus:bg-[var(--bg-card)] focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent-subtle)]',
+              icon && 'pl-11',
+              (iconRight || isPassword) && 'pr-11',
+              error && 'border-red-500/60 focus:border-red-500 focus:ring-red-500/10',
               className
             )}
             {...props}
           />
-          {iconRight && (
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)]">
+          {label && (
+            <label 
+              htmlFor={inputId} 
+              className={cn(
+                "absolute left-4 top-4 -translate-y-1/2 text-[var(--text-muted)] text-sm transition-all pointer-events-none",
+                "peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-4 peer-focus:text-xs peer-focus:text-[var(--accent)]",
+                icon && "left-11 peer-focus:left-11",
+                error && "text-red-500 peer-focus:text-red-500"
+              )}
+            >
+              {label}
+              {props.required && <span className="text-red-400 ml-1">*</span>}
+            </label>
+          )}
+          
+          {isPassword ? (
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors focus:outline-none"
+              tabIndex={-1}
+            >
+              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+            </button>
+          ) : iconRight && (
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)] pointer-events-none">
               {iconRight}
             </div>
           )}
         </div>
-        {error && <p className="input-error">{error}</p>}
-        {hint && !error && <p className="text-xs text-[var(--text-muted)] mt-1">{hint}</p>}
+        {error && (
+          <p className="text-sm text-red-500 mt-1.5 flex items-center gap-1.5 animate-in fade-in slide-in-from-top-1">
+            <AlertCircle size={14} /> {error}
+          </p>
+        )}
+        {hint && !error && <p className="text-xs text-[var(--text-muted)] mt-1.5 ml-1">{hint}</p>}
       </div>
     );
   }

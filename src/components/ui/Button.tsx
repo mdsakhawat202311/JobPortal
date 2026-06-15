@@ -2,6 +2,7 @@
 
 import React, { forwardRef } from 'react';
 import { cn } from '@/lib/utils';
+import { Loader2 } from 'lucide-react';
 
 type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
 type ButtonSize = 'sm' | 'md' | 'lg';
@@ -12,20 +13,29 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
   icon?: React.ReactNode;
   iconRight?: React.ReactNode;
-  as?: 'button' | 'a';
-  href?: string;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant = 'primary', size = 'md', loading, icon, iconRight, className, children, disabled, ...props }, ref) => {
+    const baseClasses = "inline-flex items-center justify-center gap-2 font-semibold transition-all active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--accent)]/30 disabled:pointer-events-none disabled:opacity-50";
+    
+    const sizeClasses = {
+      sm: "h-9 px-4 text-sm rounded-lg",
+      md: "h-11 px-6 text-sm rounded-xl",
+      lg: "h-14 px-8 text-base rounded-2xl"
+    };
+
+    const variantClasses = {
+      primary: "bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:from-violet-500 hover:to-indigo-500 border border-white/10",
+      secondary: "bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border)] shadow-sm hover:bg-[var(--bg-card-hover)] hover:border-[var(--border-hover)]",
+      ghost: "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]",
+      danger: "bg-red-500 text-white shadow-lg shadow-red-500/25 hover:bg-red-400"
+    };
+
     const classes = cn(
-      'btn',
-      variant === 'primary'   && 'btn-primary',
-      variant === 'secondary' && 'btn-secondary',
-      variant === 'ghost'     && 'btn-ghost',
-      variant === 'danger'    && 'btn-danger',
-      size === 'sm'           && 'btn-sm',
-      size === 'lg'           && 'btn-lg',
+      baseClasses,
+      sizeClasses[size],
+      variantClasses[variant],
       className
     );
 
@@ -37,7 +47,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {loading ? (
-          <Spinner />
+          <Loader2 className="animate-spin" size={size === 'sm' ? 16 : 20} />
         ) : (
           <>
             {icon && <span className="shrink-0">{icon}</span>}
@@ -51,22 +61,4 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 Button.displayName = 'Button';
 
-function Spinner({ size = 16 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2.5}
-      strokeLinecap="round"
-      className="animate-spin"
-    >
-      <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" opacity={0.25} />
-      <path d="M21 12a9 9 0 00-9-9" />
-    </svg>
-  );
-}
-
-export { Button, Spinner };
+export { Button };
