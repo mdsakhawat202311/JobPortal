@@ -81,7 +81,7 @@ function JobFeedContent() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative overflow-hidden" style={{ background: 'var(--gradient-hero)', paddingTop: '112px', paddingBottom: '112px' }}>
+      <section className="relative pt-16 pb-28 overflow-hidden" style={{ background: 'var(--gradient-hero)' }}>
         {/* Mesh gradient blobs */}
         <div className="absolute top-0 left-1/4 w-72 h-72 rounded-full opacity-30 pointer-events-none blur-3xl"
           style={{ background: 'radial-gradient(circle, rgba(165,233,221,0.5) 0%, transparent 70%)' }} />
@@ -104,7 +104,7 @@ function JobFeedContent() {
           </p>
 
           {/* Inline search */}
-          <div className="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto" style={{ marginBottom: '80px' }}>
+          <div className="flex flex-col sm:flex-row gap-3 w-full max-w-2xl mx-auto justify-center mb-20">
             <div className="relative flex-1">
               <input
                 type="search"
@@ -139,7 +139,7 @@ function JobFeedContent() {
       </section>
 
       {/* Main content */}
-      <section style={{ paddingTop: '112px', paddingBottom: '112px' }}>
+      <section className="pt-28 pb-16">
         <div className="container-app max-w-[1600px]">
           <div className="grid grid-cols-1 lg:grid-cols-[16rem_1fr] xl:grid-cols-[16rem_minmax(400px,1fr)_minmax(400px,1.2fr)] gap-6 lg:gap-8">
             {/* Sidebar filters */}
