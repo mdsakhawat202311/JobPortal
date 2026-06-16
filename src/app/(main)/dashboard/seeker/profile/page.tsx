@@ -405,8 +405,8 @@ export default function ProfileBuilderPage() {
           <Input label="Company" placeholder="Acme Corp" error={expForm.formState.errors.company_name?.message} {...expForm.register('company_name')} />
           <Input label="Job title" placeholder="Software Engineer" error={expForm.formState.errors.job_title?.message} {...expForm.register('job_title')} />
           <div className="grid grid-cols-2 gap-4">
-            <Input label="Start date" type="month" error={expForm.formState.errors.start_date?.message} {...expForm.register('start_date')} />
-            <Input label="End date" type="month" hint="Leave blank if current" {...expForm.register('end_date')} />
+            <Input label="Start date" type="date" error={expForm.formState.errors.start_date?.message} {...expForm.register('start_date')} />
+            <Input label="End date" type="date" hint="Leave blank if current" {...expForm.register('end_date')} />
           </div>
           <label className="flex items-center gap-2 text-sm text-[var(--text-secondary)] cursor-pointer">
             <input type="checkbox" className="accent-violet-600" {...expForm.register('is_current_role')} />
@@ -427,8 +427,8 @@ export default function ProfileBuilderPage() {
           <Input label="Degree" placeholder="Bachelor of Science" error={eduForm.formState.errors.degree?.message} {...eduForm.register('degree')} />
           <Input label="Field of study" placeholder="Computer Science" {...eduForm.register('field_of_study')} />
           <div className="grid grid-cols-2 gap-4">
-            <Input label="Start date" type="month" error={eduForm.formState.errors.start_date?.message} {...eduForm.register('start_date')} />
-            <Input label="End date" type="month" {...eduForm.register('end_date')} />
+            <Input label="Start date" type="date" error={eduForm.formState.errors.start_date?.message} {...eduForm.register('start_date')} />
+            <Input label="End date" type="date" {...eduForm.register('end_date')} />
           </div>
           <div className="flex gap-3">
             <Button type="button" variant="ghost" className="flex-1" onClick={() => setEduModal({ open: false })}>Cancel</Button>
