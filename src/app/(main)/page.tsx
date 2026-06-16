@@ -202,7 +202,7 @@ function JobFeedContent() {
             <div className="hidden xl:block">
               <div className="sticky top-24 h-[calc(100vh-8rem)] rounded-2xl overflow-hidden border border-[var(--border)] shadow-sm bg-[var(--bg-card)]">
                 {selectedJobId ? (
-                  <JobDetailsPane jobId={selectedJobId} />
+                  <JobDetailsPane key={selectedJobId} jobId={selectedJobId} />
                 ) : (
                   <div className="h-full flex flex-col items-center justify-center p-10 text-center text-[var(--text-muted)]">
                     <Briefcase size={48} className="mb-4 opacity-20" />
