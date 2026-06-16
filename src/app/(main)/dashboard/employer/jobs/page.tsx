@@ -38,15 +38,15 @@ export default function EmployerJobsPage() {
 
   if (loading) {
     return (
-      <div className="container-app py-10 max-w-4xl space-y-4">
+      <div className="max-w-4xl space-y-4">
         {[...Array(4)].map((_, i) => <Skeleton key={i} className="h-20 rounded-xl" />)}
       </div>
     );
   }
 
   return (
-    <div className="py-10">
-      <div className="container-app max-w-4xl">
+    <div>
+      <div className="max-w-4xl">
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="font-display font-bold text-3xl text-[var(--text-primary)]">Job Postings</h1>

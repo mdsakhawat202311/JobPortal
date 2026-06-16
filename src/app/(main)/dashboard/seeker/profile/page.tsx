@@ -197,7 +197,7 @@ export default function ProfileBuilderPage() {
 
   if (loading) {
     return (
-      <div className="container-app py-10 max-w-4xl space-y-6">
+      <div className="max-w-4xl space-y-6">
         <Skeleton className="h-48 rounded-2xl" />
         <Skeleton className="h-64 rounded-2xl" />
       </div>
@@ -205,8 +205,8 @@ export default function ProfileBuilderPage() {
   }
 
   return (
-    <div className="py-10">
-      <div className="container-app max-w-4xl">
+    <div>
+      <div className="max-w-4xl">
         <div className="mb-8">
           <h1 className="font-display font-bold text-3xl text-[var(--text-primary)]">Profile Builder</h1>
           <p className="text-[var(--text-secondary)] mt-1">Build your professional profile to attract employers.</p>

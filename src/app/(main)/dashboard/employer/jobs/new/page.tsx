@@ -75,8 +75,8 @@ export default function NewJobPage() {
   const getSkillName = (id: string) => allSkills.find(s => s.id === id)?.name || id;
 
   return (
-    <div className="py-10">
-      <div className="container-app max-w-3xl">
+    <div>
+      <div className="max-w-3xl">
         <Link href="/dashboard/employer/jobs" className="inline-flex items-center gap-1.5 text-sm text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors mb-6">
           <ArrowLeft size={14} /> Back to Jobs
         </Link>

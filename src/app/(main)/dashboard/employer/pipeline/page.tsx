@@ -96,7 +96,7 @@ export default function PipelinePage() {
 
   if (loading) {
     return (
-      <div className="py-10">
+      <div>
         <div className="container-app">
           <Skeleton className="h-8 w-48 mb-6 rounded" />
           <div className="flex gap-4 overflow-x-auto pb-4">
@@ -108,7 +108,7 @@ export default function PipelinePage() {
   }
 
   return (
-    <div className="py-10">
+    <div>
       <div className="container-app">
         <div className="mb-8">
           <h1 className="font-display font-bold text-3xl text-[var(--text-primary)]">Hiring Pipeline</h1>

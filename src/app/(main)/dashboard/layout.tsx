@@ -10,8 +10,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   return (
     <div className="flex flex-col md:flex-row min-h-[calc(100vh-4rem)]">
       <Sidebar />
-      <div className="flex-1 overflow-x-hidden">
-        {children}
+      <div className="flex-1 overflow-x-hidden bg-[var(--bg-base)] p-4 md:p-8 lg:p-10">
+        <div className="max-w-6xl mx-auto w-full">
+          {children}
+        </div>
       </div>
     </div>
   );

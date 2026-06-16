@@ -73,8 +73,7 @@ export default function SeekerDashboardPage() {
   ];
 
   return (
-    <div className="py-10">
-      <div className="container-app max-w-5xl space-y-6">
+    <div className="space-y-6">
         {/* Profile banner */}
         <div className="glass-card p-6 flex flex-col sm:flex-row items-start sm:items-center gap-5">
           <Avatar
@@ -158,7 +157,6 @@ export default function SeekerDashboardPage() {
             )}
           </div>
         </div>
-      </div>
     </div>
   );
 }

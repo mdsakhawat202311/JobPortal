@@ -46,7 +46,7 @@ export default function EmployerDashboardPage() {
 
   if (loading) {
     return (
-      <div className="container-app py-10 max-w-5xl space-y-6">
+      <div className="max-w-5xl space-y-6">
         <Skeleton className="h-32 rounded-2xl" />
         <div className="grid grid-cols-4 gap-4">{[...Array(4)].map((_, i) => <Skeleton key={i} className="h-24 rounded-xl" />)}</div>
       </div>
@@ -66,8 +66,8 @@ export default function EmployerDashboardPage() {
   ];
 
   return (
-    <div className="py-10">
-      <div className="container-app max-w-5xl space-y-6">
+    <div>
+      <div className="max-w-5xl space-y-6">
         {/* Company header */}
         <div className="glass-card p-6 flex items-center gap-5">
           <CompanyLogo src={company?.logo_url} name={company?.name || '?'} size={64} />
