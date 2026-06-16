@@ -70,7 +70,7 @@ export function AuthLayout({
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="relative z-10 max-w-md ml-5"
+          className="relative z-10 max-w-md ml-16"
         >
           <blockquote className="space-y-4">
             <div className="flex gap-1">
