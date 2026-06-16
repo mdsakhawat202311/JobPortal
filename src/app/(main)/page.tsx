@@ -66,7 +66,7 @@ export default function JobFeedPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative pt-12 pb-6 overflow-hidden" style={{ background: 'var(--gradient-hero)' }}>
+      <section className="relative pt-16 pb-8 overflow-hidden" style={{ background: 'var(--gradient-hero)' }}>
         {/* Mesh gradient blobs */}
         <div className="absolute top-0 left-1/4 w-72 h-72 rounded-full opacity-30 pointer-events-none blur-3xl"
           style={{ background: 'radial-gradient(circle, rgba(165,233,221,0.5) 0%, transparent 70%)' }} />

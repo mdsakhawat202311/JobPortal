@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex flex-col md:flex-row min-h-[calc(100vh-4rem)]">
+    <div className="flex flex-col md:flex-row" style={{ minHeight: 'calc(100vh - var(--navbar-height))' }}>
       <Sidebar />
       <div className="flex-1 overflow-x-hidden">
         {children}

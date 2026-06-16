@@ -4,6 +4,9 @@
    DESIGN TOKENS
 ────────────────────────────────────────────── */
 :root {
+  /* Layout */
+  --navbar-height: 4rem; /* 64px — single source of truth */
+
   /* Core Palette — Light Theme (Pastel to Teal) */
   --bg-base:        #FDF4AF; /* Pale buttery yellow */
   --bg-surface:     #FFFFFF;
@@ -128,6 +131,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--navbar-height);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;

@@ -55,7 +55,8 @@ export function SidebarNav({ role }: { role: string }) {
 
       {/* Sidebar Container */}
       <aside className={cn(
-        "fixed md:sticky top-0 md:top-16 left-0 h-[100dvh] md:h-[calc(100vh-4rem)] w-64 z-40 transition-transform duration-300 shrink-0",
+        "fixed md:sticky top-0 left-0 w-64 z-40 transition-transform duration-300 shrink-0",
+        "md:top-[var(--navbar-height)] h-[100dvh] md:h-[calc(100vh-var(--navbar-height))]",
         "glass-card rounded-none border-t-0 border-b-0 border-l-0 md:border-r border-[var(--border)]",
         isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
       )}>
