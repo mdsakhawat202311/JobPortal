@@ -102,7 +102,7 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          'sticky top-0 left-0 right-0 z-50 transition-all duration-300',
           'bg-[var(--bg-surface)]/95 backdrop-blur-xl',
           'border-b',
           scrolled
@@ -111,7 +111,7 @@ export function Navbar() {
         )}
       >
         <div className="container-app">
-          <div className="flex items-center" style={{ height: 'var(--navbar-height)' }}>
+          <div className="flex items-center h-16">
             {/* ─── Left: Hamburger + Logo ─── */}
             <div className="flex items-center gap-2 md:gap-3">
               {/* Hamburger */}
@@ -301,7 +301,7 @@ export function Navbar() {
               className="fixed top-0 left-0 bottom-0 z-50 w-[280px] bg-[var(--bg-surface)] border-r border-[var(--border)] shadow-[4px_0_24px_rgba(0,0,0,0.1)] flex flex-col"
             >
               {/* Drawer Header */}
-              <div className="flex items-center justify-between px-4 border-b border-[var(--border)]" style={{ height: 'var(--navbar-height)' }}>
+              <div className="flex items-center justify-between h-16 px-4 border-b border-[var(--border)]">
                 <Link href="/" className="flex items-center gap-2.5" onClick={() => setMenuOpen(false)}>
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#6FBEB2] to-[#34908B] flex items-center justify-center">
                     <Zap size={15} className="text-white" fill="white" />

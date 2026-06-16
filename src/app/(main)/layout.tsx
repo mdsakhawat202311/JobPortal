@@ -6,7 +6,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
   return (
     <>
       <Navbar />
-      <main className="flex-1 flex flex-col" style={{ paddingTop: 'var(--navbar-height)' }}>
+      <main className="flex-1 flex flex-col">
         <PageTransition>
           {children}
         </PageTransition>
