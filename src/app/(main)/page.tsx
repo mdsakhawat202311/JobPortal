@@ -7,7 +7,9 @@ import { batchComputeMatchScores } from '@/lib/queries/match';
 import { JobCard } from '@/components/jobs/JobCard';
 import { JobFilters } from '@/components/jobs/JobFilters';
 import { JobCardSkeleton } from '@/components/ui/Skeleton';
-import { Zap, TrendingUp, Users, Briefcase, Star } from 'lucide-react';
+import { Zap, TrendingUp, Users, Briefcase, Star, X } from 'lucide-react';
+import { JobDetailsPane } from '@/components/jobs/JobDetailsPane';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const STATS = [
   { icon: Briefcase, label: 'Open Positions', value: '12,400+' },
@@ -16,12 +18,25 @@ const STATS = [
   { icon: Star, label: 'Avg. Match Score', value: '74%' },
 ];
 
-export default function JobFeedPage() {
+import { Suspense } from 'react';
+
+function JobFeedContent() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const selectedJobId = searchParams.get('jobId');
+
   const [jobs, setJobs] = useState<any[]>([]);
   const [matchScores, setMatchScores] = useState<Record<string, any>>({});
   const [loading, setLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [filters, setFilters] = useState({ search: '', jobType: '', location: '' });
+
+  // When jobs load, optionally auto-select the first job if none is selected
+  useEffect(() => {
+    if (!loading && jobs.length > 0 && !selectedJobId && typeof window !== 'undefined' && window.matchMedia('(min-width: 1280px)').matches) {
+      router.replace(`/?jobId=${jobs[0].id}`, { scroll: false });
+    }
+  }, [loading, jobs, selectedJobId, router]);
 
   useEffect(() => {
     const supabase = createClient();
@@ -125,15 +140,17 @@ export default function JobFeedPage() {
 
       {/* Main content */}
       <section className="pt-6 pb-12">
-        <div className="container-app">
-          <div className="grid grid-cols-1 lg:grid-cols-[20rem_1fr] gap-8">
+        <div className="container-app max-w-[1600px]">
+          <div className="grid grid-cols-1 lg:grid-cols-[16rem_1fr] xl:grid-cols-[16rem_minmax(400px,1fr)_minmax(400px,1.2fr)] gap-6 lg:gap-8">
             {/* Sidebar filters */}
-            <aside>
-              <JobFilters
-                filters={filters}
-                onChange={setFilters}
-                onReset={() => setFilters({ search: '', jobType: '', location: '' })}
-              />
+            <aside className="hidden lg:block">
+              <div className="sticky top-24">
+                <JobFilters
+                  filters={filters}
+                  onChange={setFilters}
+                  onReset={() => setFilters({ search: '', jobType: '', location: '' })}
+                />
+              </div>
             </aside>
 
             {/* Job cards grid */}
@@ -148,7 +165,7 @@ export default function JobFeedPage() {
               </div>
 
               {loading ? (
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                <div className="flex flex-col gap-4">
                   {Array.from({ length: 6 }).map((_, i) => <JobCardSkeleton key={i} />)}
                 </div>
               ) : jobs.length === 0 ? (
@@ -158,7 +175,7 @@ export default function JobFeedPage() {
                   <p className="text-sm text-[var(--text-muted)]">Try adjusting your search filters.</p>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                <div className="flex flex-col gap-4">
                   {jobs.map((job) => (
                     <JobCard
                       key={job.id}
@@ -167,10 +184,32 @@ export default function JobFeedPage() {
                       matchedSkills={matchScores[job.id]?.matchedRequired}
                       missingSkills={matchScores[job.id]?.missingRequired}
                       isLoggedIn={!!currentUser}
+                      isSelected={selectedJobId === job.id}
+                      onClick={() => {
+                        if (typeof window !== 'undefined' && window.matchMedia('(min-width: 1280px)').matches) {
+                          router.push(`/?jobId=${job.id}`, { scroll: false });
+                        } else {
+                          router.push(`/jobs/${job.id}`);
+                        }
+                      }}
                     />
                   ))}
                 </div>
               )}
+            </div>
+
+            {/* Split-pane Job Details (Hidden on mobile/tablet) */}
+            <div className="hidden xl:block">
+              <div className="sticky top-24 h-[calc(100vh-8rem)] rounded-2xl overflow-hidden border border-[var(--border)] shadow-sm bg-[var(--bg-card)]">
+                {selectedJobId ? (
+                  <JobDetailsPane jobId={selectedJobId} />
+                ) : (
+                  <div className="h-full flex flex-col items-center justify-center p-10 text-center text-[var(--text-muted)]">
+                    <Briefcase size={48} className="mb-4 opacity-20" />
+                    <p>Select a job to view details</p>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -178,3 +217,12 @@ export default function JobFeedPage() {
     </div>
   );
 }
+
+export default function JobFeedPage() {
+  return (
+    <Suspense>
+      <JobFeedContent />
+    </Suspense>
+  );
+}
+

@@ -14,14 +14,30 @@ interface JobCardProps {
   matchedSkills?: string[];
   missingSkills?: string[];
   isLoggedIn?: boolean;
+  onClick?: () => void;
+  isSelected?: boolean;
 }
 
-export function JobCard({ job, matchScore, matchedSkills = [], missingSkills = [], isLoggedIn }: JobCardProps) {
+export function JobCard({ job, matchScore, matchedSkills = [], missingSkills = [], isLoggedIn, onClick, isSelected }: JobCardProps) {
   const requiredSkills = job.job_skills?.filter((s: any) => s.is_required).slice(0, 4) || [];
   const hasMatch = matchScore !== undefined;
 
+  const CardWrapper = onClick ? 'button' : 'div';
+  const titleContent = (
+    <span className="font-semibold text-[var(--text-primary)] hover:text-[var(--accent-bright)] transition-colors line-clamp-1 leading-snug block mb-2 text-left">
+      {job.title}
+    </span>
+  );
+
   return (
-    <div className="glass-card p-6 rounded-2xl flex flex-col h-full group">
+    <CardWrapper 
+      onClick={onClick}
+      className={cn(
+        "glass-card p-5 md:p-6 rounded-2xl flex flex-col h-full group text-left transition-all duration-200 w-full",
+        onClick ? "cursor-pointer hover:border-[var(--accent)] hover:shadow-md" : "",
+        isSelected ? "border-[var(--accent)] ring-1 ring-[var(--accent)] shadow-md bg-[var(--bg-base)] scale-[1.02]" : ""
+      )}
+    >
       {/* Header */}
       <div className="flex items-start gap-4">
         <CompanyLogo
@@ -31,12 +47,14 @@ export function JobCard({ job, matchScore, matchedSkills = [], missingSkills = [
         />
 
         <div className="flex-1 min-w-0">
-          <Link
-            href={`/jobs/${job.id}`}
-            className="font-semibold text-[var(--text-primary)] hover:text-[var(--accent-bright)] transition-colors line-clamp-1 leading-snug block mb-2"
-          >
-            {job.title}
-          </Link>
+          {!onClick ? (
+            <Link href={`/jobs/${job.id}`}>
+              {titleContent}
+            </Link>
+          ) : (
+            titleContent
+          )}
+          
           <p className="text-sm text-[var(--text-secondary)] line-clamp-1">
             {job.company?.name}
           </p>
@@ -54,8 +72,8 @@ export function JobCard({ job, matchScore, matchedSkills = [], missingSkills = [
 
         {/* Match score ring */}
         {isLoggedIn && hasMatch && (
-          <div className="shrink-0 ml-4">
-            <MatchScoreRing score={matchScore!} size={58} strokeWidth={4} />
+          <div className="shrink-0 ml-4 hidden sm:block">
+            <MatchScoreRing score={matchScore!} size={54} strokeWidth={4} />
           </div>
         )}
       </div>
@@ -99,7 +117,7 @@ export function JobCard({ job, matchScore, matchedSkills = [], missingSkills = [
       )}
 
       {/* Footer */}
-      <div className="flex items-center justify-between pt-6 border-t border-[var(--border)] mt-auto">
+      <div className="flex items-center justify-between pt-5 border-t border-[var(--border)] mt-auto pt-6">
         {isLoggedIn && hasMatch ? (
           <span className={cn('text-xs font-medium', matchScore! >= 80 ? 'match-excellent' : matchScore! >= 60 ? 'match-good' : matchScore! >= 40 ? 'match-fair' : 'match-low')}>
             {matchScore}% skills match
@@ -107,13 +125,16 @@ export function JobCard({ job, matchScore, matchedSkills = [], missingSkills = [
         ) : (
           <span className="text-xs text-[var(--text-muted)]">{job.company?.industry || 'General'}</span>
         )}
-        <Link
-          href={`/jobs/${job.id}`}
-          className="btn btn-secondary btn-sm"
-        >
-          View Job <ChevronRight size={13} />
-        </Link>
+        
+        {!onClick && (
+          <Link
+            href={`/jobs/${job.id}`}
+            className="btn btn-secondary btn-sm shrink-0"
+          >
+            View Job <ChevronRight size={13} />
+          </Link>
+        )}
       </div>
-    </div>
+    </CardWrapper>
   );
 }
