@@ -320,8 +320,8 @@ export function Navbar() {
               </div>
 
               {/* Drawer Nav */}
-              <nav className="flex-1 overflow-y-auto py-4 px-3">
-                <div className="space-y-1">
+              <nav className="flex-1 overflow-y-auto py-6 px-4">
+                <div className="space-y-3">
                   {navLinks.map((link) => {
                     const Icon = link.icon;
                     return (
@@ -330,7 +330,7 @@ export function Navbar() {
                         href={link.href}
                         onClick={() => setMenuOpen(false)}
                         className={cn(
-                          'flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold transition-colors duration-150',
+                          'flex items-center gap-4 px-4 py-4 rounded-xl text-[17px] font-semibold transition-colors duration-150',
                           pathname === link.href
                             ? 'text-white bg-[var(--accent)] shadow-sm'
                             : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]'
@@ -346,7 +346,7 @@ export function Navbar() {
                     <Link
                       href={dashboardPath}
                       onClick={() => setMenuOpen(false)}
-                      className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors duration-150"
+                      className="flex items-center gap-4 px-4 py-4 rounded-xl text-[17px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors duration-150"
                     >
                       <LayoutDashboard size={18} />
                       Dashboard
@@ -357,7 +357,7 @@ export function Navbar() {
                     <Link
                       href="/dashboard/seeker/profile"
                       onClick={() => setMenuOpen(false)}
-                      className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors duration-150"
+                      className="flex items-center gap-4 px-4 py-4 rounded-xl text-[17px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)] transition-colors duration-150"
                     >
                       <UserIcon size={18} />
                       My Profile
